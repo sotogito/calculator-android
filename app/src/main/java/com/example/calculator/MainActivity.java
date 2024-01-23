@@ -27,9 +27,25 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void buttonClick(View view) { //해당 메서드로 onClick된 버든이 동작하는 메서드
-        if(view.getId() == R.id.num_1_button){
-            resultText.setText("1");
+        if(view.getId() == R.id.all_clear_button){
+            resultText.setTextColor(0xFF666666);
+            isFirstInput =true;
+            resultNumber =0;
+            operator = '+';
+            resultText.setText(String.valueOf(resultNumber)); //resultNumber + ""
         }
+
+        if(view.getId() == R.id.num_1_button){
+            if(isFirstInput){
+                resultText.setTextColor(0xFF000000);
+                resultText.setText("1");
+                isFirstInput = false;
+            }else {
+                resultText.append("1");
+            }
+
+        }
+
     }
 
 }
