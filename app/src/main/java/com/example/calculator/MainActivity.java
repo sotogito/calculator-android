@@ -3,6 +3,7 @@ package com.example.calculator;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -53,6 +54,9 @@ public class MainActivity extends AppCompatActivity {
             } else{
                 resultText.append(getButton.getText().toString());
             }
+        }
+        else {
+            Log.e("buttonClick","defalt" + getButton.getText().toString() + "버튼이 클릭되었습니다.");
         }
 
 
