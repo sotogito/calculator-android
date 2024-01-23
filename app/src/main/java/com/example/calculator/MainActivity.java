@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -27,24 +28,39 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void buttonClick(View view) { //해당 메서드로 onClick된 버든이 동작하는 메서드
+        Button getButton = findViewById(view.getId()); //버튼 -> 버튼 아이디 -> 버튼 텍스트
+
         if(view.getId() == R.id.all_clear_button){
             resultText.setTextColor(0xFF666666);
             isFirstInput =true;
             resultNumber =0;
             operator = '+';
-            resultText.setText(String.valueOf(resultNumber)); //resultNumber + ""
-        }
-
-        if(view.getId() == R.id.num_1_button){
+            resultText.setText(String.valueOf(resultNumber)); // == resultNumber + ""
+        }else if(view.getId() == R.id.num_0_button
+                || view.getId() == R.id.num_1_button
+                || view.getId() == R.id.num_2_button
+                || view.getId() == R.id.num_3_button
+                || view.getId() == R.id.num_4_button
+                || view.getId() == R.id.num_5_button
+                || view.getId() == R.id.num_6_button
+                || view.getId() == R.id.num_7_button
+                || view.getId() == R.id.num_8_button
+                || view.getId() == R.id.num_9_button){
             if(isFirstInput){
                 resultText.setTextColor(0xFF000000);
-                resultText.setText("1");
+                resultText.setText(getButton.getText().toString());
                 isFirstInput = false;
-            }else {
-                resultText.append("1");
+            } else{
+                resultText.append(getButton.getText().toString());
             }
-
         }
+
+
+
+
+
+
+
 
     }
 
