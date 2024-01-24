@@ -31,13 +31,18 @@ public class MainActivity extends AppCompatActivity {
     public void buttonClick(View view) { //해당 메서드로 onClick된 버든이 동작하는 메서드
         Button getButton = findViewById(view.getId()); //버튼 -> 버튼 아이디 -> 버튼 텍스트
 
+        Log.e("buttonClick","buttonClick 시작" + getButton.getText().toString() + "버튼이 클릭되었습니다.");
+        Log.d("buttonClick","resultNumber" + resultNumber);
+
+
         if(view.getId() == R.id.all_clear_button){
             resultText.setTextColor(0xFF666666);
             isFirstInput =true;
             resultNumber =0;
             operator = '+';
             resultText.setText(String.valueOf(resultNumber)); // == resultNumber + ""
-        }else if(view.getId() == R.id.num_0_button
+        }
+        else if(view.getId() == R.id.num_0_button
                 || view.getId() == R.id.num_1_button
                 || view.getId() == R.id.num_2_button
                 || view.getId() == R.id.num_3_button
@@ -55,8 +60,20 @@ public class MainActivity extends AppCompatActivity {
                 resultText.append(getButton.getText().toString());
             }
         }
-        else {
-            Log.e("buttonClick","defalt" + getButton.getText().toString() + "버튼이 클릭되었습니다.");
+
+        else if (view.getId() == R.id.addition_button) {
+            int lastNum = Integer.parseInt(resultText.getText().toString());
+
+            if(operator == '+'){
+                resultNumber += lastNum;
+            } else if (operator == '-') {
+                resultNumber -= lastNum;
+            }else if (operator == '/') {
+                resultNumber /= lastNum;
+            }else if (operator == '*') {
+                resultNumber *= lastNum;
+            }
+            operator = '+';
         }
 
 
