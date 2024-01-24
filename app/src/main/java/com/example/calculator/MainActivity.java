@@ -45,8 +45,58 @@ public class MainActivity extends AppCompatActivity {
         numberButtons[2] = findViewById(R.id.decimal_button);
         numberButtons[3] = findViewById(R.id.addition_button);
         numberButtons[4] = findViewById(R.id.result_button);
+
+        initButtons();
+
     }
 
+    private void initButtons(){
+
+        allClearbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
+        clearEntryButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
+        backSpaceButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
 
 
+        for(final Button numberButton : numberButtons){
+            numberButton.setOnClickListener(new View.OnClickListener(){
+                @Override
+                public void onClick(View view) {
+                    numberButtonClick(view);
+                }
+            });
+        }
+
+        for(final Button operatorButton : operatorButtons){
+            operatorButton.setOnClickListener(new View.OnClickListener(){
+                @Override
+                public void onClick(View view) {
+                }
+            });
+        }
+    }
+
+    private void numberButtonClick(View view) {
+        if(isFirstInput){
+            Button btn = findViewById(view.getId());
+            resultText.setText(btn.getText());
+
+        }
+    }
 }
