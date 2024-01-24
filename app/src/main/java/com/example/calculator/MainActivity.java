@@ -29,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
         resultText = findViewById(R.id.result_text);
 
         allClearbutton = findViewById(R.id.all_clear_button);
@@ -37,16 +38,17 @@ public class MainActivity extends AppCompatActivity {
 
         for(int i =0; i < numberButtons.length; i++){
             numberButtons[i] = findViewById(R.id.num_0_button+i);
-            System.out.println(numberButtons[i].getText());
         }
 
-        numberButtons[0] = findViewById(R.id.division_button);
-        numberButtons[1] = findViewById(R.id.multiply_button);
-        numberButtons[2] = findViewById(R.id.decimal_button);
-        numberButtons[3] = findViewById(R.id.addition_button);
-        numberButtons[4] = findViewById(R.id.result_button);
+        operatorButtons[0] = findViewById(R.id.division_button);
+        operatorButtons[1] = findViewById(R.id.multiply_button);
+        operatorButtons[2] = findViewById(R.id.decimal_button);
+        operatorButtons[3] = findViewById(R.id.addition_button);
+        operatorButtons[4] = findViewById(R.id.result_button);
 
         initButtons();
+
+
 
     }
 
@@ -94,9 +96,10 @@ public class MainActivity extends AppCompatActivity {
 
     private void numberButtonClick(View view) {
         if(isFirstInput){
-            Button btn = findViewById(view.getId());
-            resultText.setText(btn.getText());
-
+            //Button btn = findViewById(view.getId());
+            //resultText.setText(btn.getText());
+            resultText.setText(view.getTag().toString());
+            isFirstInput = false;
         }
     }
 }
