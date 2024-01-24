@@ -15,9 +15,14 @@ public class MainActivity extends AppCompatActivity {
     int resultNumber = 0; //인터페이스 사용
     char operator = '+';
 
-    TextView resultText; //ui를 구현하면서 생성한 버튼 id를 부여할 수 있다. 단, 프로그램이 실행된 후에 부여 가능하다.
+    TextView resultText;
 
-    Button num0;
+    Button allClearbutton;
+    Button clearEntryButton;
+    Button backSpaceButton;
+    Button[] numberButtons = new Button[10];
+    Button[] operatorButtons = new Button[5];
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,64 +30,23 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         resultText = findViewById(R.id.result_text);
-        num0 = findViewById(R.id.num_0_button);
+
+        allClearbutton = findViewById(R.id.all_clear_button);
+        clearEntryButton = findViewById(R.id.clear_entry_button);
+        backSpaceButton = findViewById(R.id.back_space_button);
+
+        for(int i =0; i < numberButtons.length; i++){
+            numberButtons[i] = findViewById(R.id.num_0_button+i);
+            System.out.println(numberButtons[i].getText());
+        }
+
+        numberButtons[0] = findViewById(R.id.division_button);
+        numberButtons[1] = findViewById(R.id.multiply_button);
+        numberButtons[2] = findViewById(R.id.decimal_button);
+        numberButtons[3] = findViewById(R.id.addition_button);
+        numberButtons[4] = findViewById(R.id.result_button);
     }
 
-    public void buttonClick(View view) { //해당 메서드로 onClick된 버든이 동작하는 메서드
-        Button getButton = findViewById(view.getId()); //버튼 -> 버튼 아이디 -> 버튼 텍스트
 
-        Log.e("buttonClick","buttonClick 시작" + getButton.getText().toString() + "버튼이 클릭되었습니다.");
-        Log.d("buttonClick","resultNumber" + resultNumber);
-
-
-        if(view.getId() == R.id.all_clear_button){
-            resultText.setTextColor(0xFF666666);
-            isFirstInput =true;
-            resultNumber =0;
-            operator = '+';
-            resultText.setText(String.valueOf(resultNumber)); // == resultNumber + ""
-        }
-        else if(view.getId() == R.id.num_0_button
-                || view.getId() == R.id.num_1_button
-                || view.getId() == R.id.num_2_button
-                || view.getId() == R.id.num_3_button
-                || view.getId() == R.id.num_4_button
-                || view.getId() == R.id.num_5_button
-                || view.getId() == R.id.num_6_button
-                || view.getId() == R.id.num_7_button
-                || view.getId() == R.id.num_8_button
-                || view.getId() == R.id.num_9_button){
-            if(isFirstInput){
-                resultText.setTextColor(0xFF000000);
-                resultText.setText(getButton.getText().toString());
-                isFirstInput = false;
-            } else{
-                resultText.append(getButton.getText().toString());
-            }
-        }
-
-        else if (view.getId() == R.id.addition_button) {
-            int lastNum = Integer.parseInt(resultText.getText().toString());
-
-            if(operator == '+'){
-                resultNumber += lastNum;
-            } else if (operator == '-') {
-                resultNumber -= lastNum;
-            }else if (operator == '/') {
-                resultNumber /= lastNum;
-            }else if (operator == '*') {
-                resultNumber *= lastNum;
-            }
-            operator = '+';
-        }
-
-
-
-
-
-
-
-
-    }
 
 }
