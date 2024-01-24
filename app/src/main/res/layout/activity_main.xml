@@ -285,6 +285,7 @@
                 android:layout_weight="50"
                 android:onClick="buttonClick"
                 android:text="0"
+                android:tag="0"
                 android:textSize="30sp">
 
             </Button>
