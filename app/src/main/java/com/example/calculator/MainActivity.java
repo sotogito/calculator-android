@@ -9,6 +9,8 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.calculator.calculator.util.DecimalFormatter;
+
 public class MainActivity extends AppCompatActivity {
 
     boolean isFirstInput = true;
@@ -105,7 +107,10 @@ public class MainActivity extends AppCompatActivity {
             isFirstInput = false;
             return;
         }
-        resultText.append(view.getTag().toString());
-        //일의 자리 숫자에 0이 들어가면 안됨
+        DecimalFormatter decimalFormatter = new DecimalFormatter();
+        String saveText = decimalFormatter.getRemoveDecimal(resultText.getText().toString());
+        saveText += view.getTag().toString();
+        resultText.setText(decimalFormatter.getDecimalString(saveText));
     }
+
 }
