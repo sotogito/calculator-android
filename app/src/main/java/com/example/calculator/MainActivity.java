@@ -95,11 +95,17 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void numberButtonClick(View view) {
-        if(isFirstInput){
+        if(isFirstInput && view.equals(numberButtons[0])){
+            return;
+        }
+        else if(isFirstInput){
             //Button btn = findViewById(view.getId());
             //resultText.setText(btn.getText());
             resultText.setText(view.getTag().toString());
             isFirstInput = false;
+            return;
         }
+        resultText.append(view.getTag().toString());
+        //일의 자리 숫자에 0이 들어가면 안됨
     }
 }
